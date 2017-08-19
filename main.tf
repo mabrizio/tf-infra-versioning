@@ -9,5 +9,7 @@ data "terraform_remote_state" "network" {
 }
 
 resource "null_resource" "cluster" {
-  
+  provisioner "local-exec" {
+    command = "git tag"
+  }
 }
