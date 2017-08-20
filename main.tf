@@ -8,8 +8,6 @@ data "terraform_remote_state" "network" {
   }
 }
 
-resource "null_resource" "cluster" {
-  provisioner "local-exec" {
-    command = "git tag"
-  }
+data "external" "latest_version" {
+  program = ["bash", "git-version.sh"]
 }
